@@ -30,9 +30,21 @@ exports.saveQuiz = async (payload, userId) => {
   } else {
     [upsertedQuiz] = await sql`
             insert into quiz
-            (name, level_question, level_answer, level_deepest, data, level, json_data, user_id)
-            values (${payload.name}, ${payload.levelQuestion}, ${payload.levelAnswer}, ${payload.levelDeepest},
-                    ${payload.levelDeepest}, ${payload.data}::json, ${payload.level}::json, ${payload.jsonData}::json,
+            (name,
+             level_question,
+             level_answer,
+             level_deepest,
+             data,
+             level,
+             json_data,
+             user_id)
+            values (${payload.name},
+                    ${payload.levelQuestion},
+                    ${payload.levelAnswer},
+                    ${payload.levelDeepest},
+                    ${payload.data}::json,
+                    ${payload.level}::json,
+                    ${payload.jsonData}::json,
                     ${userId})
             returning *`;
   }
