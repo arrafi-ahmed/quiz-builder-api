@@ -12,7 +12,10 @@ let sql = postgres({
     undefined: null,
     column: { to: postgres.fromCamel, from: postgres.toCamel },
   },
-  ssl: true,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+  // ssl: true,
   // transform: postgres.camel,
   // waitForConnections: true,
   // connectionLimit: 10,
