@@ -13,7 +13,6 @@ exports.saveQuiz = async (payload, userId) => {
     payload.jsonData = JSON.parse(payload.jsonData);
   }
   let upsertedQuiz = null;
-  console.log("debugging--", userId, payload);
   if (payload.id) {
     [upsertedQuiz] = await sql`
             update quiz
